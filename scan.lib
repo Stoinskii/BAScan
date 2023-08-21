@@ -1,0 +1,17 @@
+#!/bin/bash
+
+nmap_scan()
+{
+ nmap  $DOMAIN > $DIRECTORY/nmap
+ echo "Nmap scan results saved in $DIRECTORY/nmap"
+}
+dirsearch_scan()
+{
+ dirsearch -u $DOMAIN -e php --simple-report=$DIRECTORY/dirsearch
+ echo "Dirsearch scan results saved in $DIRECTORY/dirsearch"
+}
+crt_scan()
+{
+ curl "https://crt.sh/?q=$DOMAIN&output=json" -o $DIRECTORY/crt
+ echo "Crt scan results saved in $DIRECTORY/crt"
+}
